@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anniversary Message</title>
+    <script>
+        function calculateDays() {
+            // Set the date of the first meeting (2024, 5, 20)
+            const firstMeetingDate = new Date(2024, 5, 9); // Example: June 9, 2024
+            
+            // Get the current date
+            const currentDate = new Date();
+
+            // Calculate the difference in milliseconds
+            const diffInMillis = currentDate - firstMeetingDate;
+
+            // Convert the difference to days
+            const diffInDays = Math.floor(diffInMillis / (1000 * 60 * 60 * 24));
+
+            // Calculate months and days
+            const months = Math.floor(diffInDays / 30);
+            const days = diffInDays % 30;
+
+            // Display the message
+            document.getElementById("message").innerText = `Today makes it ${months} months and ${days} days since we first met.`;
+        }
+    </script>
+</head>
+<body onload="calculateDays()">
+    <h1>Special Message Just For You!</h1>
+    <p id="message">Loading your message...</p>
+</body>
+</html>
