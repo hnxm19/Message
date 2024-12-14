@@ -46,13 +46,14 @@
             height: 100vh;
             flex-direction: column;
             text-align: center;
+            padding: 20px;
         }
 
         /* Button Styling */
         .button {
             background-color: #ff6f61;
             color: white;
-            padding: 10px 20px;
+            padding: 12px 25px;
             text-align: center;
             font-size: 1.2em;
             border-radius: 5px;
@@ -60,12 +61,50 @@
             margin-top: 20px;
             display: inline-block;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
         }
 
         .button:hover {
             background-color: #ff4e42;
             transform: translateY(-3px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2em; /* Smaller font for mobile */
+                margin-top: 20px;
+            }
+
+            #message {
+                font-size: 1.2em;
+                max-width: 90%; /* Slightly larger message box */
+                padding: 15px;
+            }
+
+            .button {
+                padding: 10px 20px;
+                font-size: 1em; /* Adjust button size */
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 1.5em; /* Even smaller font on very small screens */
+                margin-top: 15px;
+            }
+
+            #message {
+                font-size: 1em;
+                max-width: 95%;
+                padding: 10px;
+            }
+
+            .button {
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
         }
     </style>
     <script>
