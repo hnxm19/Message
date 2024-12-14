@@ -6,24 +6,29 @@
     <title>Anniversary Message</title>
     <script>
         function calculateDays() {
-            // Set the date of the first meeting (2024, 5, 20)
-            const firstMeetingDate = new Date(2024, 5, 9); // Example: June 9, 2024
+            // Set the date of the first meeting (YYYY, MM-1, DD)
+            const firstMeetingDate = new Date(2024, 5, 20); // June 20, 2024 (Month is 0-based)
             
             // Get the current date
             const currentDate = new Date();
 
-            // Calculate the difference in milliseconds
-            const diffInMillis = currentDate - firstMeetingDate;
+            // Calculate the difference in full years, months, and days
+            let years = currentDate.getFullYear() - firstMeetingDate.getFullYear();
+            let months = currentDate.getMonth() - firstMeetingDate.getMonth();
+            let days = currentDate.getDate() - firstMeetingDate.getDate();
 
-            // Convert the difference to days
-            const diffInDays = Math.floor(diffInMillis / (1000 * 60 * 60 * 24));
+            // Adjust for negative months or days (i.e., when the current month/day is before the first meeting's month/day)
+            if (months < 0) {
+                months += 12;
+                years--;
+            }
+            if (days < 0) {
+                months--;
+                days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate(); // Days in the previous month
+            }
 
-            // Calculate months and days
-            const months = Math.floor(diffInDays / 30);
-            const days = diffInDays % 30;
-
-            // Display the message
-            document.getElementById("message").innerText = `Today makes it ${months} months and ${days} days since we first met.`;
+            // Display the result
+            document.getElementById("message").innerText = `Today makes it ${years * 12 + months} months and ${days} days since we first met.`;
         }
     </script>
 </head>
@@ -32,3 +37,4 @@
     <p id="message">Loading your message...</p>
 </body>
 </html>
+
